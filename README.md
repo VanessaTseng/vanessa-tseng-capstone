@@ -62,35 +62,35 @@ MediaStream - camera access API
 
 #### Create Account Page
 
-![](/capstone-propsal/create-account.png)
+![](capstone-proposal/create-account.png)
 
 #### Login Page
 
-![](login.png)
+![](capstone-proposal/login.png)
 
 #### Home Page
 
-![](home.png)
+![](capstone-proposal/home.png)
 
 #### Scanner Page
 
-![](scanner.png)
+![](capstone-proposal/scanner.png)
 
 #### Itemized Bill Page
 
-![](itemized-bill.png)
+![](capstone-proposal/itemized-bill.png)
 
 #### View Split Page
 
-![](view-split.png)
+![](capstone-proposal/view-split.png)
 
 #### Success Page
 
-![](success.png)
+![](capstone-proposal/success.png)
 
 ### Data
 
-![](sql-diagram.png)
+![](capstone-proposal/sql-diagram.png)
 
 ### Endpoints
 
