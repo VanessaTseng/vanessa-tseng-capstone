@@ -62,7 +62,7 @@ MediaStream - camera access API
 
 #### Create Account Page
 
-![](/capstone-propsale/create-account.png)
+![](/capstone-propsal/create-account.png)
 
 #### Login Page
 
