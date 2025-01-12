@@ -1,42 +1,59 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $primary-font;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  font-size: $body-medium-mobile;
+  margin: $margin-top $margin-mobile;
+  background-color: #f1f5fe;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+h1 {
+  font-size: $font-h1;
+  font-weight: $logo-font;
+}
+
+h2 {
+  font-size: $font-h2;
+}
+
+h3 {
+  font-size: $font-h3;
+}
+
+h4,
+label {
+  font-size: $font-h4;
+}
+
+button {
+  width: 100%;
+  height: $button-height-mobile;
+  border: none;
+  background-color: $primary-color;
+  color: $global-white-color;
+  font-weight: bold;
+  border-radius: $button-border-radius;
+
+  @include tablet {
+    height: $button-height-tablet;
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+input {
+  width: 100%;
+  border: none;
+  height: $input-height-mobile;
+  border-radius: $input-border-radius;
 }
 
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+input::placeholder {
+  color: $placeholder-text-color;
 }

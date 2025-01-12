@@ -1,0 +1,24 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.items-list {
+  background-color: $global-white-color;
+  border-radius: 10px;
+  margin: $margin-mobile 0;
+  padding: $spacing-between-elements;
+
+  &__data {
+    @include flex(row, space-between, center);
+  }
+}
+
+.totals {
+  background-color: $global-white-color;
+  border-radius: 10px;
+  padding: $spacing-between-elements;
+
+  &__wrapper {
+    @include flex(row, space-between, center);
+  }
+}
