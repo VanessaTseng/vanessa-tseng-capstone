@@ -1,20 +1,57 @@
 import "./AddBillItems.scss";
 import { useState } from "react";
+import { useLocation, useParams } from "react-router-dom";
+import axios from "axios";
+
+const API_URL = import.meta.env.VITE_API_URL;
 
 export default function AddBillItems() {
-  const [qty, setQty] = useState("");
-  const [itemName, setItemName] = useState("");
-  const [price, setPrice] = useState("");
+  const { bill_id, bill_name } = useParams();
+  console.log("bill id:", bill_id);
+  const location = useLocation();
+  const billName = location.state?.billName;
 
-  const handleSubmit = (event) => {
+  const [qty, setQty] = useState(1);
+  const [itemName, setItemName] = useState("");
+  const [price, setPrice] = useState(0);
+
+  const [items, setItems] = useState([]);
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!qty || !itemName || !price) {
-      alert("please enter all fields!");
+      alert("please enter all fields");
     }
+    try {
+      const response = await axios.post(`${API_URL}/items`, {
+        bill_id: bill_id,
+        item_name: itemName,
+        qty: qty,
+        item_price: price,
+      });
 
-    const newBillItem = { qty, itemName, price };
-    console.log(newBillItem);
+      console.log(response.data);
+      console.log(response.data.item_id);
+
+      setItems((prevItems) => [
+        ...prevItems,
+        {
+          bill_id: bill_id,
+          item_id: response.data.item_id,
+          item_name: itemName,
+          qty: qty,
+          item_price: price,
+        },
+      ]);
+
+      setItemName("");
+      setQty(1);
+      setPrice(0);
+    } catch (error) {
+      console.error(error);
+      alert("failed to add item");
+    }
   };
 
   return (
@@ -26,7 +63,7 @@ export default function AddBillItems() {
             <p className="add-items__title">qty</p>
             <input
               className="add-items__input"
-              type="text"
+              type="number"
               name="qty"
               value={qty}
               onChange={(event) => setQty(event.target.value)}
@@ -46,7 +83,7 @@ export default function AddBillItems() {
             <p className="add-items__title">Price</p>
             <input
               className="add-items__input"
-              type="text"
+              type="number"
               name="price"
               value={price}
               onChange={(event) => setPrice(event.target.value)}
@@ -58,19 +95,21 @@ export default function AddBillItems() {
         </form>
       </div>
       <div className="items-list">
-        <h4 className="items-list__header">Cheesecake Factory</h4>
-        <div className="items-list__item">
-          <div className="items-list__data">
-            <p>38x</p>
-            <p>steam soup dumpling pork</p>
-            <p>$189.62</p>
+        <h4 className="items-list__header">{billName}</h4>
+        {items.map((item) => (
+          <div key={item.item_id} className="items-list__item">
+            <div className="items-list__data">
+              <p>{item.qty}</p>
+              <p>{item.item_name}</p>
+              <p>{item.item_price}</p>
+            </div>
+            <div className="items-list__users">
+              <div className="items-list__circle"></div>
+              <div className="items-list__add-user"></div>
+            </div>
+            <p>5 persons</p>
           </div>
-          <div className="items-list__users">
-            <div className="items-list__circle"></div>
-            <div className="items-list__add-user"></div>
-          </div>
-          <p>5 persons</p>
-        </div>
+        ))}
       </div>
       <div className="totals">
         <div className="totals__wrapper">

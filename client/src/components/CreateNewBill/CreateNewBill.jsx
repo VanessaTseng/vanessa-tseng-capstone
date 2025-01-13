@@ -1,11 +1,13 @@
 import "./CreateNewBill.scss";
 import { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function CreateNewBill() {
   const [billName, setBillName] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,8 +22,12 @@ export default function CreateNewBill() {
         bill_name: billName,
       });
       alert("bill created successfully");
+      navigate(`/addBillItems/${response.data.bill_id}`, {
+        state: { billName },
+      });
     } catch (error) {
       console.error(error);
+      alert("failed to create bill");
     }
   };
 
@@ -43,11 +49,9 @@ export default function CreateNewBill() {
         </label>
       </div>
       <div className="create-bill__bottom">
-        <Link to="/addBillItems">
-          <button type="submit" className="create-bill__button">
-            next
-          </button>
-        </Link>
+        <button type="submit" className="create-bill__button">
+          next
+        </button>
       </div>
     </form>
   );

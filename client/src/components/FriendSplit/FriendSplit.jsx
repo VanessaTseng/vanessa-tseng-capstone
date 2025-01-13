@@ -1,0 +1,1 @@
+import "./FriendSplit.scss";

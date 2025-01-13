@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="createNewBill" element={<CreateNewBill />} />
-          <Route path="addBillItems" element={<AddBillItems />} />
+          <Route path="addBillItems/:bill_id" element={<AddBillItems />} />
         </Routes>
       </BrowserRouter>
     </>
