@@ -1,3 +1,58 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
+
+.home-wrapper {
+  @include flex(column, space-between, stretch);
+  height: 100vh;
+
+  &__bottom {
+    @include flex(row, center, center);
+  }
+}
+
+.home {
+  &__user {
+    @include flex(row, flex-start, center);
+    margin-bottom: $spacing-between-elements * 2;
+  }
+
+  &__img {
+    width: 5rem;
+    height: 5rem;
+    background-color: $global-white-color;
+    border-radius: 3.125rem;
+    margin-right: $spacing-between-elements;
+  }
+}
+
+.owing {
+  background-color: $global-white-color;
+  border-radius: $input-border-radius;
+  margin-bottom: $spacing-between-elements * 2;
+  padding: $spacing-between-elements;
+
+  &__payback {
+    width: 6.25rem;
+  }
+}
+
+.friends {
+  border-radius: $input-border-radius;
+  margin-bottom: $spacing-between-elements * 2;
+  padding: $spacing-between-elements;
+}
+
+.recent-bills {
+  background-color: $global-white-color;
+  border-radius: $input-border-radius;
+  margin-bottom: $spacing-between-elements * 2;
+  padding: $spacing-between-elements;
+}
+
+.add-new-bill {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 3.125rem;
+  font-size: 1.875rem;
+}

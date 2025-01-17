@@ -2,11 +2,13 @@ import "./App.scss";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AddBillItems from "./components/AddBillItems/AddBillItems";
 import CreateNewBill from "./components/CreateNewBill/CreateNewBill";
+import FriendSplit from "./components/FriendSplit/FriendSplit";
 import Home from "./pages/Home/Home";
 
 function App() {
   return (
     <>
+      {/* <FriendSplit /> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

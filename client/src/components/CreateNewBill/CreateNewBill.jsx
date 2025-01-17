@@ -32,27 +32,29 @@ export default function CreateNewBill() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="create-bill">
-      <h2 className="create-bill__header">Create New Bill</h2>
-      <div className="create-bill__top">
-        <label htmlFor="create-bill__label">
-          Name the Bill
-          <input
-            type="text"
-            name="billName"
-            className="create-bill__input"
-            placeholder="e.g Cheesecake Factory"
-            onChange={(event) => {
-              setBillName(event.target.value);
-            }}
-          />
-        </label>
-      </div>
-      <div className="create-bill__bottom">
-        <button type="submit" className="create-bill__button">
-          next
-        </button>
-      </div>
-    </form>
+    <div className="create-bill-wrapper">
+      <form onSubmit={handleSubmit} className="create-bill">
+        <div className="create-bill__top">
+          <h2 className="create-bill__header">Create New Bill</h2>
+          <label htmlFor="create-bill__label">
+            Name the Bill
+            <input
+              type="text"
+              name="billName"
+              className="create-bill__input"
+              placeholder="e.g Cheesecake Factory"
+              onChange={(event) => {
+                setBillName(event.target.value);
+              }}
+            />
+          </label>
+        </div>
+        <div className="create-bill__bottom">
+          <button type="submit" className="create-bill__button">
+            next
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
