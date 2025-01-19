@@ -21,7 +21,6 @@ export default function CreateNewBill() {
       const response = await axios.post(`${API_URL}/bills`, {
         bill_name: billName,
       });
-      alert("bill created successfully");
       navigate(`/addBillItems/${response.data.bill_id}`, {
         state: { billName },
       });

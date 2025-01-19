@@ -12,44 +12,33 @@ export default function FriendSplit({
   currentFriends = [],
   itemId,
 }) {
-  const [searchFriend, setSearchFriend] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [selectedFriends, setSelectedFriends] = useState(currentFriends);
 
+  //Posts selectedFriends then calls handleSelectedFriends
   const handleSave = async () => {
-    console.log("searchFriend:", searchFriend);
-    console.log("SearchResults", searchResults);
-    console.log("selectedFriends", selectedFriends);
     try {
-      console.log({
-        item_id: itemId,
-        friends: selectedFriends.map((friend) => friend.id),
-      });
       const friendsArray = selectedFriends.map((friend) => friend.id);
       await axios.post(`${API_URL}/cost_distribution`, {
         item_id: itemId,
         friends: friendsArray,
       });
-    } catch (error) {
-      console.error(error);
-      alert("did not save cost distribution");
-    }
-    try {
+
       const response = await axios.get(
         `${API_URL}/cost_distribution/${itemId}`
       );
-      handleSelectedFriends(response.data);
+      handleSelectedFriends(itemId, response.data);
     } catch (error) {
       console.error(error);
+      alert("failed to save cost distribution");
     }
     closeModal();
   };
 
+  //   getrs list of users and filters out friends already selected
   const handleChange = async (event) => {
     event.preventDefault();
     const value = event.target.value;
-    console.log("value:", value);
-    setSearchFriend(value);
 
     if (value.length > 0) {
       try {
@@ -60,21 +49,17 @@ export default function FriendSplit({
           (user) => !selectedFriends.some((friend) => friend.id === user.id)
         );
         setSearchResults(filteredResults);
-        console.log("response data", response.data);
       } catch (error) {
         console.error(error);
       }
     }
   };
 
+  // adds friend to selectedFriends and clears search
   const handleSelect = (user) => {
-    console.log("user:", user);
     setSelectedFriends((prev) => [...prev, user]);
-    setSearchFriend("");
     setSearchResults([]);
   };
-
-  console.log(selectedFriends);
 
   return (
     <div className="modal">
@@ -88,7 +73,6 @@ export default function FriendSplit({
               type="text"
               placeholder="e.g. John Doe"
               onChange={handleChange}
-              value={searchFriend}
             />
           </label>
           <div className="friend-split__dropdown">
@@ -108,7 +92,7 @@ export default function FriendSplit({
           {selectedFriends.map((user) => (
             <div key={user.id} className="friend-split__list">
               <p className="friend-split__friend-name">{user.name}</p>
-              <div className="friendsplit__check">✓</div>
+              <div className="friend-split__check">✓</div>
             </div>
           ))}
           <button onClick={handleSave}>Confirm</button>
