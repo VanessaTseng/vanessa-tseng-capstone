@@ -11,11 +11,12 @@
   @include flex(column, space-between, stretch);
 
   &__header {
-    margin-bottom: $spacing-between-elements;
+    margin-bottom: $spacing-between-elements * 2;
   }
 
   &__input {
     margin-top: $padding-increment;
+    padding: $padding-increment;
   }
 
   &__input::placeholder {

@@ -81,35 +81,37 @@ export default function AddBillItems() {
         <div className="add-items">
           <h2 className="add-items__header">Add Bill Items</h2>
           <form onSubmit={handleSubmit} className="add-items__form">
-            <div className="add-items__container">
-              <p className="add-items__title">qty</p>
-              <input
-                className="add-items__input"
-                type="number"
-                name="qty"
-                value={qty}
-                onChange={(event) => setQty(event.target.value)}
-              />
-            </div>
-            <div className="add-items__container">
-              <p className="add-items__title">Item Name</p>
-              <input
-                className="add-items__input"
-                type="text"
-                name="itemName"
-                value={itemName}
-                onChange={(event) => setItemName(event.target.value)}
-              />
-            </div>
-            <div className="add-items__container">
-              <p className="add-items__title">Price</p>
-              <input
-                className="add-items__input"
-                type="number"
-                name="price"
-                value={price}
-                onChange={(event) => setPrice(event.target.value)}
-              />
+            <div className="add-items__wrapper">
+              <div className="add-items__container add-items__container--qty">
+                <p className="add-items__title">qty</p>
+                <input
+                  className="add-items__input"
+                  type="number"
+                  name="qty"
+                  value={qty}
+                  onChange={(event) => setQty(event.target.value)}
+                />
+              </div>
+              <div className="add-items__container add-items__container--name">
+                <p className="add-items__title">Item Name</p>
+                <input
+                  className="add-items__input"
+                  type="text"
+                  name="itemName"
+                  value={itemName}
+                  onChange={(event) => setItemName(event.target.value)}
+                />
+              </div>
+              <div className="add-items__container add-items__container--price">
+                <p className="add-items__title">Price</p>
+                <input
+                  className="add-items__input"
+                  type="number"
+                  name="price"
+                  value={price}
+                  onChange={(event) => setPrice(event.target.value)}
+                />
+              </div>
             </div>
             <button className="add-items__button" type="submit">
               + Add Item
@@ -117,13 +119,21 @@ export default function AddBillItems() {
           </form>
         </div>
         <div className="items-list">
-          <h4 className="items-list__header">{billName}</h4>
+          <div className="items-list__header-wrapper">
+            <h4 className="items-list__header">{billName}</h4>
+          </div>
           {items.map((item) => (
             <div key={item.item_id} className="items-list__item">
               <div className="items-list__data">
-                <h5>{item.qty}x</h5>
-                <h5>{item.item_name}</h5>
-                <h5>${Number(item.item_price).toFixed(2)}</h5>
+                <p className="items-list__titles items-list__titles--qty">
+                  {item.qty}x
+                </p>
+                <p className="items-list__titles items-list__titles--name">
+                  {item.item_name}
+                </p>
+                <p className="items-list__titles items-list__titles--price">
+                  ${Number(item.item_price).toFixed(2)}
+                </p>
               </div>
               <div className="items-list__users">
                 {Array.isArray(item.friends) &&
@@ -166,12 +176,12 @@ export default function AddBillItems() {
             <p className="totals__value">${hst.toFixed(2)}</p>
           </div>
           <div className="totals__wrapper">
-            <p className="totals__label">Total Bill</p>
-            <p className="totals__value">${total.toFixed(2)}</p>
+            <p className="totals__label totals__label--bill">Total Bill</p>
+            <p className="totals__value--bill">${total.toFixed(2)}</p>
           </div>
         </div>
-        <button onClick={handleCreateBill}>Create Bill</button>
       </div>
+      <button onClick={handleCreateBill}>Create Bill</button>
     </div>
   );
 }
