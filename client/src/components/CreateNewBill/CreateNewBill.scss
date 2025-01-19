@@ -3,10 +3,23 @@
 @use "../../styles/partials/mixins" as *;
 
 .create-bill-wrapper {
-  height: 100vh;
+  height: 90vh;
 }
 
 .create-bill {
-  height: 100vh;
+  height: 90vh;
   @include flex(column, space-between, stretch);
+
+  &__header {
+    margin-bottom: $spacing-between-elements * 2;
+  }
+
+  &__input {
+    margin-top: $padding-increment;
+    padding: $padding-increment;
+  }
+
+  &__input::placeholder {
+    padding: $padding-increment;
+  }
 }

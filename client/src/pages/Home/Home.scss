@@ -8,7 +8,7 @@ span {
 
 .home-wrapper {
   @include flex(column, space-between, stretch);
-  height: 100vh;
+  height: 90vh;
 
   &__bottom {
     @include flex(row, center, center);
@@ -51,6 +51,7 @@ span {
   &__payback {
     width: 7.5rem;
     height: $button-height-mobile / 1.75;
+    font-size: 14px;
   }
 }
 

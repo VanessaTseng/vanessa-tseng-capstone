@@ -48,7 +48,7 @@ export default function Home() {
             </div>
             {friends.map(
               (friend, index) =>
-                index < 4 && (
+                index < 5 && (
                   <img
                     className="friends__img"
                     key={friend.id}
@@ -91,7 +91,7 @@ export default function Home() {
             <p className="bill__date">November 21st, 2024</p>
             <div className="bill__wrapper">
               <h4 className="bill_name">Chipotle</h4>
-              <h5 className="bill__total">$54.23</h5>
+              <h5 className="bill__total">$102.23</h5>
             </div>
             <div className="bill__count">
               <div className="bill__circle">

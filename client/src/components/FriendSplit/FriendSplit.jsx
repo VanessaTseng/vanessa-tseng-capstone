@@ -64,39 +64,52 @@ export default function FriendSplit({
   return (
     <div className="modal">
       <div className="friend-split">
-        <p onClick={closeModal}>close</p>
-        <div className="friend-split__container">
-          <h3>{`Add friends to split "x${itemQty} ${itemName}"`}</h3>
-          <label>
-            Search
-            <input
-              type="text"
-              placeholder="e.g. John Doe"
-              onChange={handleChange}
-            />
-          </label>
-          <div className="friend-split__dropdown">
-            {searchResults.map((user) => (
-              <div
-                key={user.id}
-                className="friend-split__dropdown-item"
-                onClick={() => handleSelect(user)}
-              >
-                {user.name}
+        <div className="friend-split__top">
+          <p className="friend-split__close" onClick={closeModal}>
+            close
+          </p>
+          <div className="friend-split__container">
+            <h3 className="friend-split__add-friends">
+              Add friends to split item
+            </h3>
+            <h3 className="friend-split__header">{`${itemQty}x ${itemName}`}</h3>
+            <label className="friend-split__label">
+              Search
+              <input
+                type="text"
+                placeholder="e.g. John Doe"
+                onChange={handleChange}
+                className="friend-split__input"
+              />
+            </label>
+            <div className="friend-split__dropdown">
+              {searchResults.map((user) => (
+                <div
+                  key={user.id}
+                  className="friend-split__dropdown-item"
+                  onClick={() => handleSelect(user)}
+                >
+                  {user.name}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="friend-split__friends">
+            <h5 className="friend-split__friends-header">Friends</h5>
+            {selectedFriends.map((user) => (
+              <div key={user.id} className="friend-split__list">
+                <img
+                  className="friend-split__img"
+                  src={`${API_URL}${user.photo}`}
+                  alt={`${user.name}'s profile photo`}
+                />
+                <p className="friend-split__friend-name">{user.name}</p>
+                <div className="friend-split__check">✓</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="friend-split__friends">
-          <h4 className="friend-split__friends-header">Friends</h4>
-          {selectedFriends.map((user) => (
-            <div key={user.id} className="friend-split__list">
-              <p className="friend-split__friend-name">{user.name}</p>
-              <div className="friend-split__check">✓</div>
-            </div>
-          ))}
-          <button onClick={handleSave}>Confirm</button>
-        </div>
+        <button onClick={handleSave}>Confirm</button>
       </div>
     </div>
   );

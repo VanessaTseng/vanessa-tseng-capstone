@@ -2,9 +2,46 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/mixins" as *;
 
+.add-bill-items-wrapper {
+  @include flex(column, space-between, flex-start);
+  height: 90vh;
+}
+
 .add-items {
+  &__header {
+    margin-bottom: $spacing-between-elements * 2;
+  }
+
+  &__wrapper {
+    @include flex(row, space-between, center);
+    margin-bottom: $spacing-between-elements;
+  }
+
+  &__title {
+    padding-left: $padding-increment;
+    margin-bottom: $padding-increment;
+    font-weight: 500;
+  }
+  &__input {
+    padding: $padding-increment;
+  }
+
+  &__container--qty {
+    width: 13%;
+  }
+
+  &__container--name {
+    width: 62%;
+  }
+
+  &__container--price {
+    width: 18%;
+  }
+
   &__button {
     height: $button-height-mobile/1.5;
+    margin-bottom: $spacing-between-elements;
+    font-size: 14px;
   }
 }
 
@@ -13,9 +50,11 @@
   border-radius: 10px;
   margin: $margin-mobile 0;
   padding: $spacing-between-elements;
+  height: 45vh;
+  overflow: scroll;
 
-  &__header {
-    margin-bottom: $spacing-between-elements * 2;
+  &__header-wrapper {
+    @include flex(row, center, center);
   }
 
   &__data {
@@ -23,8 +62,26 @@
     margin-bottom: $spacing-between-elements/1.5;
   }
 
+  &__titles {
+    font-weight: 500;
+  }
+
+  &__titles--qty {
+    width: 20%;
+  }
+
+  &__titles--name {
+    width: 60%;
+  }
+
+  &__titles--price {
+    width: 20%;
+    text-align: right;
+  }
+
   &__item {
-    margin-bottom: $spacing-between-elements * 2;
+    padding: $spacing-between-elements * 2 0;
+    border-bottom: 2px solid $divider-color;
   }
 
   &__add-user {
@@ -55,5 +112,20 @@
 
   &__wrapper {
     @include flex(row, space-between, center);
+  }
+
+  &__label {
+    padding-bottom: $padding-increment;
+  }
+
+  &__label--bill {
+    padding-top: $spacing-between-elements;
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+
+  &__value--bill {
+    font-weight: 500;
+    font-size: 0.9375rem;
   }
 }

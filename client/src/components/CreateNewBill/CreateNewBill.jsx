@@ -35,7 +35,7 @@ export default function CreateNewBill() {
       <form onSubmit={handleSubmit} className="create-bill">
         <div className="create-bill__top">
           <h2 className="create-bill__header">Create New Bill</h2>
-          <label htmlFor="create-bill__label">
+          <label className="create-bill__label">
             Name the Bill
             <input
               type="text"
