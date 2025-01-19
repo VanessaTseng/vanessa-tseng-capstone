@@ -1,0 +1,12 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.create-bill-wrapper {
+  height: 100vh;
+}
+
+.create-bill {
+  height: 100vh;
+  @include flex(column, space-between, stretch);
+}

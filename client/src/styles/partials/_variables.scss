@@ -1,0 +1,61 @@
+// FONT SIZE + HEIGHT
+$primary-font: "Inter", sans-serif;
+$logo-font: "Krona One", sans-serif;
+
+$logo-font-mobile: 2.1875rem; // 35px
+
+$body-small-mobile: 0.6875rem; // 11px
+$body-medium-mobile: 0.8125rem; // 13px
+$body-large-mobile: 0.9375rem; // 15px
+
+$body-small-tablet: 0.75rem; // 12px
+$body-medium-tablet: 0.875rem; //14px
+$body-large-tablet: 1rem; //16px
+
+$font-h1: 35px;
+$font-h2: 24px;
+$font-h3: 22px;
+$font-h4: 18px;
+$font-h5: 16px;
+$font-h6: 14px;
+
+// PRIMARY COLORS
+$global-text-color: #3a3a3a;
+$primary-color: #5168fe;
+$global-white-color: #ffffff;
+$background-color: #f1f5fe;
+
+// SECONDARY COLORS
+$placeholder-text-color: #5c667e;
+
+//BUTTON COLORS
+$button-color: #5168fe;
+$hover-button-color: #232940;
+
+//BREAKPOINTS
+$tablet-breakpoint: 48rem; // 768px
+$desktop-breakpoint: 80rem; // 1280px
+
+//MARGINS
+$margin-mobile: 1rem; // 16px
+$margin-tablet: 1.5rem; // 24px
+$margin-desktop: auto;
+$margin-top: 3rem; // 48px
+$margin-bottom: 2.125rem; // 34px
+
+//PADDING
+$padding-increment: 0.5rem; // 8px
+$spacing-between-elements: 1rem; // 16px
+
+//BUTTONS
+$button-height-mobile: 3rem; // 48px
+$button-height-tablet: 3.25rem; // 52px
+
+$button-width-padding: 1rem; // 16px
+$button-border-radius: 3.125rem; // 50px
+
+//INPUT
+$input-height-mobile: 2.25rem; // 36px
+$input-height-tablet: 2.375rem; // 38px
+$input-border-radius: 0.625rem; // 10px
+$input-padding-sides: 1rem; // 16px

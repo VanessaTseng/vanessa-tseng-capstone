@@ -1,0 +1,59 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.add-items {
+  &__button {
+    height: $button-height-mobile/1.5;
+  }
+}
+
+.items-list {
+  background-color: $global-white-color;
+  border-radius: 10px;
+  margin: $margin-mobile 0;
+  padding: $spacing-between-elements;
+
+  &__header {
+    margin-bottom: $spacing-between-elements * 2;
+  }
+
+  &__data {
+    @include flex(row, space-between, center);
+    margin-bottom: $spacing-between-elements/1.5;
+  }
+
+  &__item {
+    margin-bottom: $spacing-between-elements * 2;
+  }
+
+  &__add-user {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    border: 1px dashed $primary-color;
+    background-color: transparent;
+    color: $primary-color;
+    margin-left: $spacing-between-elements;
+  }
+
+  &__users {
+    @include flex(row, flex-start, stretch);
+  }
+
+  &__selected-friends {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+  }
+}
+
+.totals {
+  background-color: $global-white-color;
+  border-radius: 10px;
+  padding: $spacing-between-elements;
+
+  &__wrapper {
+    @include flex(row, space-between, center);
+  }
+}

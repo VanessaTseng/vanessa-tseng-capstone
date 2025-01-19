@@ -1,0 +1,35 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.bill-split {
+  background-color: $global-white-color;
+  border-radius: 0.625rem;
+  padding: $padding-increment * 2;
+
+  &__name {
+    margin-bottom: $spacing-between-elements;
+  }
+  &__user {
+    margin-bottom: $spacing-between-elements * 2;
+  }
+}
+
+.user {
+  @include flex(row, flex-start, center);
+  &__image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    margin-right: $spacing-between-elements;
+  }
+
+  &__right {
+    width: 100%;
+    // @include flex(row, space-between, stretch);
+  }
+
+  &__wrapper {
+    @include flex(row, space-between, stretch);
+  }
+}

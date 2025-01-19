@@ -1,0 +1,70 @@
+@use "./styles/partials/variables" as *;
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/mixins" as *;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $primary-font;
+}
+
+body {
+  font-size: $body-medium-mobile;
+  margin: $margin-top $margin-mobile;
+  background-color: #f1f5fe;
+}
+
+h1 {
+  font-size: $font-h1;
+  font-weight: $logo-font;
+}
+
+h2 {
+  font-size: $font-h2;
+}
+
+h3 {
+  font-size: $font-h3;
+}
+
+h4 {
+  font-size: $font-h4;
+}
+
+h5 {
+  font-size: $font-h5;
+}
+
+h6 {
+  font-size: $font-h6;
+}
+
+label {
+  font-size: $font-h4;
+}
+
+button {
+  width: 100%;
+  height: $button-height-mobile;
+  border: none;
+  background-color: $primary-color;
+  color: $global-white-color;
+  font-weight: bold;
+  border-radius: $button-border-radius;
+
+  @include tablet {
+    height: $button-height-tablet;
+  }
+}
+
+input {
+  width: 100%;
+  border: none;
+  height: $input-height-mobile;
+  border-radius: $input-border-radius;
+}
+
+input::placeholder {
+  color: $placeholder-text-color;
+}
