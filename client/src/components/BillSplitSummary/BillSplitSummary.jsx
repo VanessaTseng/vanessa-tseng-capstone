@@ -1,13 +1,16 @@
 import "./BillSplitSummary.scss";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 export default function BillSummary() {
   const { bill_id } = useParams();
   const [billData, setBillData] = useState({ bill_name: "", userSplits: {} });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getBillData = async () => {
@@ -22,10 +25,23 @@ export default function BillSummary() {
     getBillData();
   }, [bill_id]);
 
+  const handleConfirmSplit = () => {
+    navigate("/success");
+  };
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
-    <div>
+    <div className="bill-split-wrapper">
       <div className="bill-split">
-        <h3 className="bill-split__name">{billData.bill_name}</h3>
+        <span className="material-symbols-outlined" onClick={goBack}>
+          <ArrowBackIosIcon />
+        </span>
+        <div className="bill-split__header-wrapper">
+          <h3 className="bill-split__name">{billData.bill_name}</h3>
+        </div>
         {Object.entries(billData.userSplits).map(([userId, userData]) => (
           <div className="bill-split__user" key={userId}>
             <div className="user">
@@ -38,10 +54,10 @@ export default function BillSummary() {
               </div>
               <div className="user__right">
                 <div className="user__wrapper">
-                  <h5 className="user__name">
+                  <h6 className="user__name">
                     {userData.friend_name}'s Total{" "}
-                  </h5>
-                  <h5 className="user__total">${userData.total.toFixed(2)}</h5>
+                  </h6>
+                  <h6 className="user__total">${userData.total.toFixed(2)}</h6>
                 </div>
                 <div className="user__wrapper">
                   <p className="user__tax">HST</p>
@@ -60,8 +76,10 @@ export default function BillSummary() {
           </div>
         ))}
       </div>
-      <div>
-        <button>Confirm Split</button>
+      <div className="confirm-split">
+        <button className="confirm-split__button" onClick={handleConfirmSplit}>
+          Confirm Split
+        </button>
       </div>
     </div>
   );

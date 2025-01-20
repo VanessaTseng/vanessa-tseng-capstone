@@ -54,7 +54,16 @@ export default function AddBillItems() {
       });
 
       const response = await axios.get(`${API_URL}/bills/${bill_id}`);
-      setItems(response.data.items);
+      const updatedItems = response.data.items.map((newItem) => {
+        const existingItem = items.find(
+          (item) => item.item_id === newItem.item_id
+        );
+        return existingItem
+          ? { ...newItem, friends: existingItem.friends }
+          : newItem;
+      });
+
+      setItems(updatedItems);
       setItemName("");
       setQty(1);
       setPrice(0);
