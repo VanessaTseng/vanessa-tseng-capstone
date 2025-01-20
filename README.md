@@ -4,28 +4,26 @@ Splitly
 
 ## Overview
 
-Splitly simplifies splitting bills among friends or groups. Splitly scans and reads receipts, allowing users to assign expenses to specific individuals efficiently.
+Splitly simplifies splitting bills among friends or groups and allows users to assign expenses to specific individuals efficiently.
 
 ### Problem Space
 
-Manually splitting bills with groups after dinners and trips is often tedious or time consuming. It also makes it difficult to keep track of who has paid back.
+Splitting bills with groups after dinners and trips is often tedious or time consuming. It also makes it difficult to keep track of who has paid back.
 
 ### User Profile
 
 Individuals or groups that frequently share expenses. (e.g. friends, family, club members, coworkers)
 
 - needing to split a bill for dinner, trips, gatherings
-- looking to save time and track payments
+- looking to track payments
 
 ### Features
 
-- As a user, I want to be able to create an account
-- As a user, I want to be able to login to my account
-- As a logged in user, I want to scan or upload a receipt that can extract and display the itemized bill.
-- As a logged in user, I want to assign items on the bill to specific individuals so the app can calculate individual shares.
-- As a logged in user, I want to view the calculated distribution among participating individuals
-- As a logged in user, I want to see past bills
-- As a logged in user, I want to see my balance owing
+- As a user, I want to scan or upload a receipt that can extract and display the itemized bill.
+- As a user, I want to assign items on the bill to specific individuals so the app can calculate individual shares.
+- As a user, I want to view the calculated distribution among participating individuals
+- As a user, I want to see past bills
+- As a user, I want to see my balance owing
 
 ## Implementation
 
@@ -34,27 +32,16 @@ Individuals or groups that frequently share expenses. (e.g. friends, family, clu
 - React
 - Express
 - MySQL
-  Client libraries
-- React
 - react-router
 - axios
-  Server libraries
 - knex
-- Express
-- bycrypt
-
-### APIs
-
-Taggun - OCR AI scanner for receipts
-MediaStream - camera access API
 
 ### Sitemap
 
 - Create account
 - Login
 - Home page
-- Receipt Scanner/Uploader
-- Itemized Bill + assign users
+- Receipt Manual Input
 - View Bill Split among users
 - Success screen
 
@@ -62,27 +49,31 @@ MediaStream - camera access API
 
 #### Create Account Page
 
-![](capstone-proposal/create-account.png)
+![](images/create-account.png)
 
 #### Login Page
 
-![](capstone-proposal/login.png)
+![](images/login.png)
 
 #### Home Page
 
-![](capstone-proposal/home.png)
+![](images/home.png)
 
-#### Scanner Page
+#### Create Bill Page
 
-![](capstone-proposal/scanner.png)
+![](images/create-bill.png)
 
-#### Itemized Bill Page
+#### Add Bill Items Page
 
-![](capstone-proposal/itemized-bill.png)
+![](images/add-bill-items.png)
+
+#### Select Friends Page
+
+![](images/select-friends.png)
 
 #### View Split Page
 
-![](capstone-proposal/view-split.png)
+![](images/view-split.png)
 
 #### Success Page
 
@@ -94,93 +85,90 @@ MediaStream - camera access API
 
 ### Endpoints
 
-\*\*POST /user/register
+\*\*POST /bills
 
-- add a user account
+- create a new bill with a name
   Parameters:
-- name: The user's name
-- email: The user's email
-- password: The user's provided password
+- bill name: The name of the bill
   Response:
   {
+  "bill_id": 1,
+  }
+
+\*\*GET /bills/:billId
+
+- Gets data associated with specific bill
+  Parameters:
+- bill id: id for the bill
+  Response:
+  {
+  "bill_id": 1,
+  "user_name": "Chipotle,
+  "tax": null,
+  "tip": null,
+  "item_id": 5, 
+  "item_name": "Veggie Bowl",
+  "qty": 3,
+  "item_price": 16.99,  
+  "friend_id": 5, 
+  "friend_name": 5, 
+  "friend_photo": 5, 
+  }
+
+  \*\*GET /bills/:billId/splits
+
+- Calculates and gets bill split summary among friends
+  Parameters:
+- bill id: id for the bill
+
+
+\*\*POST /cost_distribution
+
+- adds friends to split specific item
+  Parameters:
+- item id: id of item
+- friends: friend ids
+  Response:
+  {
+  "item_id": 1,
+  "Friends": [1,2,3]
+  }
+
+
+\*\*GET /cost_distribution/:item_id
+
+- get friends part of split of item
+  Parameters:
+- item id: id of item that is split
+
+
+\*\*POST /items
+
+- adds items to specific bill
+  Parameters:
+- bill id: id of bill
+- qty: quantity of item
+- item name: name of item
+- price: price of item
+  Response:
+  {
+  "item_id": 1,
+  "bill_id": 2,
+  "item_name": "Veggie Bowl",
+  "qty": 2,
+  "item_price": 32.99,
+  } 
+
+\*\*GET /users
+
+- gets users from database
+  Response:
+  {
+  "id": 1,
   "name": "John Doe",
-  "email": "johndoe@gmail.com",
-  "password": "password123"
+  "photo": "/imagepath"
   }
 
-\*\*POST /user/login
-
-- login to user account
-  Parameters:
-- email: The user's email
-- password: The user's provided password
-  {
-  "email": "johndoe@gmail.com",
-  "password": "password123"
-  }
-
-\*\*POST /receipts
-
-- upload receipt
-  Parameters:
-- image: The receipt image
-
-\*\*GET /receipts/:receipt_id
-
-- get receipt details
-  Parameters:
-- receipt id: The receipt id
-  {
-  "receipt_id": "123",
-  "items":
-  [
-  {item_id:1, "name": "Dumpling, "price": 8.99},
-  {item_id:2, "name": "Soup", "price": 4.49}
-  ]
-  "total": 15.00,
-  "tax": 1.00,
-  "tip": 2.00,
-  }
-
-\*\*POST /items/:item_id/assign
-
-- assign item to friends
-  Parameters:
-- item id: The item id
-- friends id: your friends id
-  {
-  "friends_ids": [1,2],
-  "split":
-  }
-
-\*\*POST /calculations
-
-- calculate bills
-  Parameters:
-- receipt id: The receipt id
-- split: The split between friends
-- tax: tax from receipt
-- tip: tip from receipt
-
-\*\*POST /friends
-
-- add friend
-  Parameters:
-- name: name of friend
-- email: email of friend
-  {
-  "name": "John Doe",
-  "email": "johndoe@gmail.com",
-  }
-
-\*\*POST /friends
-
-- list friends
-  Parameters:
-- name: name of friend
-  {
-  "name": "John Doe",
-  }
 
 ## Roadmap
 
@@ -190,13 +178,11 @@ MediaStream - camera access API
 
 - Create Migrations
 
-- Feature: Create Account
-
-- Feature: login
-
 - Feature: Home Page
 
-- Feature: Receipt Scanner
+- Feature: Create Bill
+
+- Feature: Add Items to Bill
 
 - Feature: Itemized Bill
 
@@ -209,9 +195,10 @@ MediaStream - camera access API
 - DEMO DAY
 
 ## Future Implementations
-
-- store currency
-- Ability to transfer funds to friends
-- attatch own cards
+- API scanner to read receipts
+- Functional Sign Up/Sign In
+- Home Page loads non-static data
+- Home Page fully functional
+- Functions to Edit and Delete
 - interactive with other users & profiles
 - notifications from bill spilts
