@@ -1,0 +1,131 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.add-bill-items-wrapper {
+  @include flex(column, space-between, flex-start);
+  height: 90vh;
+}
+
+.add-items {
+  &__header {
+    margin-bottom: $spacing-between-elements * 2;
+  }
+
+  &__wrapper {
+    @include flex(row, space-between, center);
+    margin-bottom: $spacing-between-elements;
+  }
+
+  &__title {
+    padding-left: $padding-increment;
+    margin-bottom: $padding-increment;
+    font-weight: 500;
+  }
+  &__input {
+    padding: $padding-increment;
+  }
+
+  &__container--qty {
+    width: 13%;
+  }
+
+  &__container--name {
+    width: 62%;
+  }
+
+  &__container--price {
+    width: 18%;
+  }
+
+  &__button {
+    height: $button-height-mobile/1.5;
+    margin-bottom: $spacing-between-elements;
+    font-size: 14px;
+  }
+}
+
+.items-list {
+  background-color: $global-white-color;
+  border-radius: 10px;
+  margin: $margin-mobile 0;
+  padding: $spacing-between-elements;
+  height: 45vh;
+  overflow: scroll;
+
+  &__header-wrapper {
+    @include flex(row, center, center);
+  }
+
+  &__data {
+    @include flex(row, space-between, center);
+    margin-bottom: $spacing-between-elements/1.5;
+  }
+
+  &__titles {
+    font-weight: 500;
+  }
+
+  &__titles--qty {
+    width: 20%;
+  }
+
+  &__titles--name {
+    width: 60%;
+  }
+
+  &__titles--price {
+    width: 20%;
+    text-align: right;
+  }
+
+  &__item {
+    padding: $spacing-between-elements * 2 0;
+    border-bottom: 2px solid $divider-color;
+  }
+
+  &__add-user {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    border: 1px dashed $primary-color;
+    background-color: transparent;
+    color: $primary-color;
+    margin-left: $spacing-between-elements;
+  }
+
+  &__users {
+    @include flex(row, flex-start, stretch);
+  }
+
+  &__selected-friends {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+  }
+}
+
+.totals {
+  background-color: $global-white-color;
+  border-radius: 10px;
+  padding: $spacing-between-elements;
+
+  &__wrapper {
+    @include flex(row, space-between, center);
+  }
+
+  &__label {
+    padding-bottom: $padding-increment;
+  }
+
+  &__label--bill {
+    padding-top: $spacing-between-elements;
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+
+  &__value--bill {
+    font-weight: 500;
+    font-size: 0.9375rem;
+  }
+}

@@ -1,0 +1,57 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.sign-up-wrapper {
+  height: 90vh;
+  @include flex(column, space-between, stretch);
+}
+
+.sign-up {
+  &__banner {
+    background-color: $primary-color;
+    @include flex(column, center, center);
+    position: absolute;
+    width: 100vw;
+    left: 0;
+    right: 0;
+    top: 0;
+    padding-top: $margin-top;
+    border-radius: 0 0 10px 10px;
+  }
+
+  &__logo {
+    color: $global-white-color;
+    margin-top: $spacing-between-elements * 2;
+    margin-bottom: $spacing-between-elements * 3;
+    font-family: "Krona One";
+    font-weight: 400;
+  }
+
+  &__upper {
+    margin-top: $margin-top * 4;
+  }
+
+  &__header {
+    margin-bottom: $padding-increment;
+  }
+
+  &__signup {
+    margin-bottom: $spacing-between-elements * 2;
+    color: $placeholder-text-color;
+  }
+
+  &__span {
+    color: $primary-color;
+    margin-left: $padding-increment;
+  }
+
+  &__title {
+    margin-bottom: $padding-increment;
+  }
+
+  &__input {
+    margin-bottom: $spacing-between-elements * 2;
+    padding: 0.625rem;
+  }
+}

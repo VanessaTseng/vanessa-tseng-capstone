@@ -1,0 +1,89 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include flex(row, center, center);
+}
+
+.friend-split {
+  width: 85vw;
+  height: 75vh;
+  background-color: $background-color;
+  border-radius: $input-border-radius;
+  padding: $spacing-between-elements $margin-mobile;
+  @include flex(column, space-between, stretch);
+
+  &__close {
+    margin-bottom: $spacing-between-elements * 2;
+    text-align: right;
+  }
+
+  &__add-friends {
+    font-weight: 500;
+  }
+
+  &__header {
+    margin-bottom: $spacing-between-elements * 2;
+    font-weight: 500;
+  }
+
+  &__label {
+    font-weight: 700;
+    font-size: 1.125rem;
+  }
+
+  &__input {
+    margin-top: $padding-increment;
+    padding: $padding-increment;
+  }
+
+  &__dropdown {
+    max-height: 15vh;
+    overflow: scroll;
+    padding: $padding-increment;
+    background-color: $global-white-color;
+    border-radius: 0 0 10px 10px;
+  }
+
+  &__dropdown-item {
+    padding: 10px;
+    border-bottom: 2px solid $divider-color;
+  }
+
+  &__friends-header {
+    margin-top: $spacing-between-elements * 2;
+    margin-bottom: $spacing-between-elements;
+  }
+
+  &__friend-name {
+    font-size: 1rem;
+  }
+
+  &__list {
+    @include flex(row, space-between, center);
+    margin-bottom: $padding-increment;
+  }
+
+  &__img {
+    width: 40px;
+    height: 40px;
+    border-radius: 3.125rem;
+    border: 1.5px solid $primary-color;
+  }
+
+  &__friend-name {
+    width: 60%;
+  }
+
+  &__check {
+    font-size: 1.25rem;
+    color: $primary-color;
+  }
+}

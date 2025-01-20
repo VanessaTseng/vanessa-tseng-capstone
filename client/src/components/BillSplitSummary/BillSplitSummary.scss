@@ -1,0 +1,81 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/mixins" as *;
+
+.bill-split-wrapper {
+  height: 90vh;
+  @include flex(column, space-between, center);
+}
+
+.material-symbols-outlined {
+  font-size: 16px;
+  position: absolute;
+  top: 35px;
+}
+
+.bill-split {
+  background-color: $global-white-color;
+  border-radius: 0.625rem;
+  padding: $padding-increment * 2;
+  height: 75vh;
+  width: 100%;
+  overflow: scroll;
+  position: relative;
+
+  &__header-wrapper {
+    @include flex(row, center, center);
+    margin-top: $spacing-between-elements;
+    margin-bottom: $spacing-between-elements;
+    width: 100%;
+  }
+
+  &__name {
+    margin-bottom: $spacing-between-elements;
+    font-weight: 600;
+  }
+
+  &__user {
+    margin-bottom: $spacing-between-elements * 2;
+    border-bottom: 2px solid $divider-color;
+    padding-bottom: $spacing-between-elements;
+  }
+}
+
+.user {
+  margin-bottom: $padding-increment;
+  @include flex(row, flex-start, center);
+
+  &__tax {
+    font-weight: 500;
+  }
+
+  &__image {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    margin-right: $spacing-between-elements;
+    border: 1.5px solid $primary-color;
+  }
+
+  &__right {
+    width: 100%;
+    // @include flex(row, space-between, stretch);
+  }
+
+  &__wrapper {
+    @include flex(row, space-between, stretch);
+    margin-bottom: $padding-increment/2;
+  }
+
+  &__fractions {
+    font-weight: 400;
+  }
+
+  &__price {
+    font-weight: 400;
+  }
+}
+
+.confirm-split {
+  width: 100%;
+}
